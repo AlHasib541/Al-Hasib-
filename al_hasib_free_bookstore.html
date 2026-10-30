@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#080b16">
+<meta name="description" content="Al Hasib Bookstore — read, share and explore books for free.">
+<title>Al Hasib | Free Digital Library</title>
+<style>
+:root{--bg:#080b16;--panel:#11182a;--panel2:#0d1322;--text:#eef4ff;--muted:#9aa9c4;--cyan:#4de7f5;--purple:#a78bfa;--line:#27334b}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(ellipse at 15% 0%,#15264a 0,transparent 38%),radial-gradient(ellipse at 90% 20%,#261746 0,transparent 32%),var(--bg);color:var(--text);font-family:Inter,system-ui,Arial,sans-serif;line-height:1.6}
+a{color:inherit;text-decoration:none}.wrap{width:min(1120px,92%);margin:auto}
+header{position:sticky;top:0;z-index:10;background:#080b16eF;border-bottom:1px solid var(--line);backdrop-filter:blur(14px)}
+.nav{height:72px;display:flex;align-items:center;justify-content:space-between;gap:16px}.brand{font-weight:900;letter-spacing:.4px;font-size:1.2rem}.brand span{color:var(--cyan)}nav{display:flex;gap:20px;color:var(--muted);font-size:.94rem}nav a:hover{color:var(--cyan)}
+.hero{padding:76px 0 54px;display:grid;grid-template-columns:1.35fr .65fr;gap:32px;align-items:center}.eyebrow{color:var(--cyan);font-weight:800;letter-spacing:2px;text-transform:uppercase;font-size:.75rem}
+h1{font-size:clamp(2.5rem,6vw,4.8rem);line-height:1.04;margin:12px 0 18px;letter-spacing:-2px}.gradient{background:linear-gradient(90deg,var(--cyan),var(--purple));color:transparent;background-clip:text}
+.lead{color:var(--muted);font-size:1.08rem;max-width:620px}.hero-card{border:1px solid #394967;background:linear-gradient(145deg,#182641,#111629 65%);border-radius:24px;padding:26px;box-shadow:0 20px 70px #0007}.orb{height:145px;border-radius:18px;background:radial-gradient(circle at 50% 45%,#4de7f588,transparent 27%),linear-gradient(135deg,#182c52,#21153c);display:grid;place-items:center;font-size:4rem;margin-bottom:18px}
+.btn{border:0;border-radius:12px;padding:12px 18px;background:linear-gradient(90deg,var(--cyan),#9c9bff);color:#07111e;font-weight:800;cursor:pointer;display:inline-block}.btn.secondary{background:#1b2740;color:var(--text);border:1px solid #3a4b69}.btn.small{padding:8px 12px;font-size:.88rem}.btn:hover{filter:brightness(1.08);transform:translateY(-1px)}
+section{padding:38px 0}.section-head{display:flex;justify-content:space-between;align-items:end;gap:16px;margin-bottom:20px}h2{font-size:1.8rem;margin:0 0 4px}.muted{color:var(--muted)}.search{background:var(--panel);border:1px solid var(--line);border-radius:12px;color:var(--text);padding:12px 14px;width:min(300px,100%)}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.book{background:linear-gradient(160deg,#151f35,#0f1525);border:1px solid var(--line);border-radius:18px;padding:18px;display:flex;flex-direction:column;min-height:255px}.cover{height:115px;border-radius:13px;background:linear-gradient(135deg,#153e55,#31204d);display:grid;place-items:center;font-size:2.7rem;margin-bottom:14px}.book h3{margin:0 0 5px}.book p{color:var(--muted);font-size:.92rem;margin:0 0 14px}.book-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:auto}
+.panel{background:#10182a;border:1px solid var(--line);border-radius:20px;padding:22px}.two{display:grid;grid-template-columns:1fr 1fr;gap:18px}.field{display:grid;gap:6px;margin:12px 0}.field label{font-size:.9rem;color:#c5d1e5}.field input,.field textarea,.field select{width:100%;background:#080f1d;border:1px solid #34435e;border-radius:10px;padding:11px;color:var(--text);font:inherit}.field textarea{min-height:120px;resize:vertical}.note{font-size:.86rem;color:var(--muted)}.preview{display:flex;flex-wrap:wrap;gap:12px;margin-top:12px}.preview img,.preview video{max-width:100%;width:220px;max-height:180px;object-fit:contain;border-radius:12px;background:#05070d;border:1px solid var(--line)}
+footer{border-top:1px solid var(--line);padding:28px 0;color:var(--muted);margin-top:35px}.footer-row{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.modal{position:fixed;inset:0;background:#000b;display:none;place-items:center;padding:18px;z-index:30}.modal.show{display:grid}.modal-box{width:min(760px,100%);max-height:85vh;overflow:auto;background:#10182a;border:1px solid #40516f;border-radius:18px;padding:24px}.modal-box pre{white-space:pre-wrap;overflow-wrap:anywhere;font:inherit;color:#dce8ff}.x{float:right;background:#25334d;color:white;border:0;border-radius:8px;padding:6px 11px;cursor:pointer}
+.empty{grid-column:1/-1;padding:25px;text-align:center;color:var(--muted);border:1px dashed var(--line);border-radius:14px}
+@media(max-width:760px){.hero{grid-template-columns:1fr;padding-top:48px}.grid{grid-template-columns:1fr 1fr}.two{grid-template-columns:1fr}nav{gap:11px;font-size:.82rem}.nav{height:auto;min-height:66px;flex-wrap:wrap;padding:12px 0}}
+@media(max-width:480px){.grid{grid-template-columns:1fr}.section-head{align-items:start;flex-direction:column}.search{width:100%}h1{letter-spacing:-1px}}
+</style>
+</head>
+<body>
+<header><div class="wrap nav">
+  <a class="brand" href="#home">AL <span>HASIB</span></a>
+  <nav><a href="#books">Books</a><a href="#add">Share Text</a><a href="#media">Media</a><a href="#about">About</a></nav>
+</div></header>
+<main class="wrap">
+<section class="hero" id="home">
+ <div><div class="eyebrow">A free digital library</div><h1>Stories live<br> <span class="gradient">beyond pages.</span></h1>
+ <p class="lead">Welcome to Al Hasib — a place to read, discover and share writing. Explore books for free or publish your own text in this personal library.</p>
+ <a class="btn" href="#books">Explore free books</a> <a class="btn secondary" href="#add">Share your writing</a></div>
+ <div class="hero-card"><div class="orb">✦</div><div class="eyebrow">READ · CREATE · SHARE</div><h2>Your library, your universe.</h2><p class="muted">No book prices. No checkout. Just stories and ideas.</p></div>
+</section>
+<section id="books">
+ <div class="section-head"><div><div class="eyebrow">The collection</div><h2>Free Books</h2><div class="muted">Open a book to read it. Download its text whenever you like.</div></div><input class="search" id="search" placeholder="Search books..." aria-label="Search books"></div>
+ <div class="grid" id="bookGrid"></div>
+</section>
+<section id="add">
+ <div class="section-head"><div><div class="eyebrow">Your words matter</div><h2>Share Your Text</h2><div class="muted">Add a title, author and your writing to this browser's library.</div></div></div>
+ <div class="panel">
+  <form id="bookForm">
+   <div class="two"><div class="field"><label for="title">Book title</label><input id="title" required maxlength="90" placeholder="e.g. The Midnight Letter"></div><div class="field"><label for="author">Author name</label><input id="author" maxlength="60" placeholder="e.g. Al Hasib"></div></div>
+   <div class="field"><label for="description">Short description</label><input id="description" maxlength="180" placeholder="What is this book about?"></div>
+   <div class="field"><label for="content">Book text</label><textarea id="content" required placeholder="Paste or type your story or book here..."></textarea></div>
+   <button class="btn" type="submit">Add to my library</button>
+   <p class="note">Your added books are saved in this browser on this device. They are not automatically published online or shared with other visitors.</p>
+  </form>
+ </div>
+</section>
+<section id="media">
+ <div class="section-head"><div><div class="eyebrow">Creator corner</div><h2>Photo & Video Preview</h2><div class="muted">Choose images or videos from your phone to preview them here.</div></div></div>
+ <div class="panel">
+  <div class="field"><label for="mediaFiles">Select photo/video files</label><input id="mediaFiles" type="file" accept="image/*,video/*" multiple></div>
+  <div class="preview" id="mediaPreview"></div>
+  <p class="note">Privacy note: previews are local to your device and are not uploaded to a server. Online sharing needs a storage service and its own setup.</p>
+ </div>
+</section>
+<section id="about"><div class="panel"><div class="eyebrow">About this project</div><h2>Al Hasib Bookstore</h2><p class="muted">An independent, free digital reading space. All books displayed here are free to read. Only upload or share writing and media that you own or have permission to use.</p></div></section>
+</main>
+<footer><div class="wrap footer-row"><div><strong>AL <span style="color:var(--cyan)">HASIB</span></strong><div class="note">A free digital library</div></div><div class="note">Made for readers and creators · © <span id="year"></span> Al Hasib</div></div></footer>
+<div class="modal" id="reader" role="dialog" aria-modal="true" aria-labelledby="readerTitle"><div class="modal-box"><button class="x" id="closeReader">Close ✕</button><h2 id="readerTitle"></h2><p class="muted" id="readerAuthor"></p><pre id="readerText"></pre><button class="btn" id="downloadText">Download text</button> <button class="btn secondary" id="printBook">Print / Save as PDF</button></div></div>
+<script>
+const starterBooks=[
+ {id:'welcome',title:'Welcome to Al Hasib',author:'Al Hasib',description:'A short welcome note to your free digital library.',content:'Welcome to Al Hasib Bookstore!\\n\\nThis is your free digital library — a place to read, create and share. You can add your own stories using the Share Your Text form.\\n\\nEvery book on this demo site is free to read. Enjoy exploring, and keep writing!'},
+ {id:'power',title:'The Power of Reading',author:'Al Hasib',description:'A short note about curiosity, learning and imagination.',content:'THE POWER OF READING\\n\\nReading is a quiet journey that can take the mind across countries, centuries and ideas. A good book invites us to ask questions, understand different points of view and imagine new possibilities.\\n\\nYou do not need to read hundreds of pages in one day. Begin with a few thoughtful paragraphs, reflect on them and return tomorrow. Small steps can build a lifelong habit.'},
+ {id:'dreams',title:'Dreams Need Action',author:'Al Hasib',description:'A brief motivational piece about turning goals into steps.',content:'DREAMS NEED ACTION\\n\\nA dream gives us a direction, but daily effort moves us forward. Big achievements are often built from small, repeated actions: learning one new idea, practising a skill and improving after a mistake.\\n\\nMake your goal clear. Divide it into manageable steps. Be patient with progress, and let curiosity guide your learning.'}
+];
+let books=[...starterBooks];
+try{const saved=JSON.parse(localStorage.getItem('alHasibBooks')||'[]');books=[...starterBooks,...saved]}catch(e){}
+const grid=document.getElementById('bookGrid');let activeBook=null;
+function esc(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+function renderBooks(filter=''){const matches=books.filter(b=>(b.title+' '+b.author+' '+b.description).toLowerCase().includes(filter.toLowerCase()));grid.innerHTML=matches.length?'': '<div class="empty">No books found. Try another search.</div>';matches.forEach((b,i)=>{const el=document.createElement('article');el.className='book';el.innerHTML=`<div class="cover">📖</div><h3>${esc(b.title)}</h3><p>By ${esc(b.author||'Unknown author')}<br>${esc(b.description||'A free book to explore.')}</p><div class="book-actions"><button class="btn small" data-read="${esc(b.id)}">Read free</button><button class="btn secondary small" data-download="${esc(b.id)}">Download .txt</button></div>`;grid.appendChild(el)});}
+function openBook(id){activeBook=books.find(b=>b.id===id);if(!activeBook)return;document.getElementById('readerTitle').textContent=activeBook.title;document.getElementById('readerAuthor').textContent='By '+(activeBook.author||'Unknown author');document.getElementById('readerText').textContent=activeBook.content;document.getElementById('reader').classList.add('show')}
+function downloadBook(b){const blob=new Blob([b.title+'\\nBy '+(b.author||'Unknown author')+'\\n\\n'+b.content],{type:'text/plain;charset=utf-8'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download=b.title.replace(/[^a-z0-9-_ ]/gi,'').trim().replace(/\\s+/g,'-')+'.txt';a.click();URL.revokeObjectURL(url)}
+grid.addEventListener('click',e=>{const r=e.target.closest('[data-read]'),d=e.target.closest('[data-download]');if(r)openBook(r.dataset.read);if(d){const b=books.find(x=>x.id===d.dataset.download);if(b)downloadBook(b)}});
+document.getElementById('search').addEventListener('input',e=>renderBooks(e.target.value));
+document.getElementById('bookForm').addEventListener('submit',e=>{e.preventDefault();const b={id:'custom-'+Date.now(),title:document.getElementById('title').value.trim(),author:document.getElementById('author').value.trim()||'Al Hasib',description:document.getElementById('description').value.trim(),content:document.getElementById('content').value.trim()};books.push(b);try{localStorage.setItem('alHasibBooks',JSON.stringify(books.filter(x=>x.id.startsWith('custom-'))))}catch(err){alert('Browser storage is full. You can still read this book until you reload the page.')}renderBooks();e.target.reset();document.getElementById('books').scrollIntoView({behavior:'smooth'});});
+document.getElementById('closeReader').onclick=()=>document.getElementById('reader').classList.remove('show');
+document.getElementById('reader').addEventListener('click',e=>{if(e.target.id==='reader')e.currentTarget.classList.remove('show')});
+document.getElementById('downloadText').onclick=()=>{if(activeBook)downloadBook(activeBook)};
+document.getElementById('printBook').onclick=()=>{if(!activeBook)return;const w=window.open('','_blank');if(!w){alert('Allow pop-ups to print or save as PDF.');return;}w.document.write('<html><head><title>'+esc(activeBook.title)+'</title><style>body{font:16px Georgia,serif;max-width:760px;margin:40px auto;line-height:1.7;padding:0 20px;white-space:pre-wrap}</style></head><body><h1>'+esc(activeBook.title)+'</h1><p>By '+esc(activeBook.author)+'</p><div>'+esc(activeBook.content).replace(/\\n/g,'<br>')+'</div></body></html>');w.document.close();w.focus();w.print()};
+document.getElementById('mediaFiles').addEventListener('change',e=>{const box=document.getElementById('mediaPreview');box.innerHTML='';[...e.target.files].forEach(file=>{const url=URL.createObjectURL(file);let el;if(file.type.startsWith('image/')){el=document.createElement('img');el.alt=file.name;el.src=url}else if(file.type.startsWith('video/')){el=document.createElement('video');el.controls=true;el.src=url}else return;box.appendChild(el)})});
+document.getElementById('year').textContent=new Date().getFullYear();renderBooks();
+</script>
+</body></html>
